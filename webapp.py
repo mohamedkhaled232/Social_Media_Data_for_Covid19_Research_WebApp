@@ -9,7 +9,7 @@ import io
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
-country_names = ["Afghanistan","new_germany15","new_germany30","new_germany60","new_belgium15","new_belgium30","new_belgium60", "Belgium", "Bolivia", "Chile", "Croatia", "Czechia", "Denmark", "Egypt", "France", "Germany", "Ireland", "Israel", "Italy", "Luxembourg", "Malaysia", "Norway", "Slovakia", "Slovenia", "South Africa", "Spain", "Sudan", "Switzerland", "Togo", "Uganda", "United Kingdom", "Yemen", "Zimbabwe"]
+country_names = ["Afghanistan", "Belgium", "Bolivia", "Chile", "Croatia", "Czechia", "Denmark", "Egypt", "France", "Germany", "Ireland", "Israel", "Italy", "Luxembourg", "Malaysia", "Norway", "Slovakia", "Slovenia", "South Africa", "Spain", "Sudan", "Switzerland", "Togo", "Uganda", "United Kingdom", "Yemen", "Zimbabwe"]
 
 # Add a title to your app
 st.title("Stringency - Negative Sentiment Tweets")
@@ -18,7 +18,7 @@ st.title("Stringency - Negative Sentiment Tweets")
 default_ix = country_names.index('Germany')
 selected_country = st.selectbox("Select a country:", country_names, index=default_ix)
 
-url = os.path.join(dir_path, f"../data/tweets_data/{selected_country}.tsv")
+url = os.path.join(dir_path, f"Data/{selected_country}.tsv")
 
     
 df = pd.read_csv(url, sep='\t')
@@ -158,7 +158,7 @@ elif selected_option == "Correlation between Stringency Index and Negative Tweet
 # Function to load data and plot
 def plot_time_series(country_name, color, start_date, end_date):
     # Construct the path to the TSV file based on the selected country
-    file_path = os.path.join(dir_path, f"../data/tweets_data/{country_name}.tsv")
+    file_path = os.path.join(dir_path, f"Data/{country_name}.tsv")
     
     # Load the data from the TSV file
     data = pd.read_csv(file_path, sep='\t')
