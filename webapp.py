@@ -25,7 +25,7 @@ df = pd.read_csv(url, sep='\t')
 
 # Set default values for the date range
 default_start_date = datetime(2020, 2, 1)
-default_end_date = datetime(2021, 2, 28)
+default_end_date = datetime(2021, 3, 31)
 
 # Create a double-ended slider for selecting the date range
 start_date, end_date = st.slider(
