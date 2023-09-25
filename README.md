@@ -1,7 +1,5 @@
 # Social_Media_Data_for_Covid19_Research_WebApp
 
-Certainly, here's the revised text with "from here" as clickable links:
-
 ---
 
 # Exploring Human Behavior during the COVID-19 Pandemic through Tweet Analysis
