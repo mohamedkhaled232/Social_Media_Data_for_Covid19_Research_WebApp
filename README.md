@@ -43,10 +43,6 @@ In this section, you can analyze multiple countries simultaneously and compare t
 
 
 # streamlite
-
-```markdown
-# Streamlit Web App Deployment Guide
-
 This guide will walk you through the process of creating a web app with Streamlit and deploying it to Streamlit Cloud. Streamlit is a Python library that simplifies the development of data-driven web applications.
 
 ## Prerequisites
@@ -67,7 +63,7 @@ pip install streamlit
 1. Create a Python script (e.g., `app.py`) where you'll write your Streamlit app code.
 2. Import Streamlit and any necessary libraries.
 3. Define the app layout and functionality using Streamlit components like `st.title`, `st.markdown`, `st.sidebar`, `st.button`, `st.plotly_chart`, etc.
-   For detailed documentation on Streamlit, refer to the Streamlit Documentation.
+   For detailed documentation on Streamlit, refer to the Streamlit Documentation https://docs.streamlit.io/ .
 ## Step 3: Run the Web App Locally
 
 1. Open your terminal and navigate to the directory containing your `app.py` file.
