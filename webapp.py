@@ -264,7 +264,7 @@ if selected== "Different Countries' Trends" :
 
         # Create a double-ended slider for selecting the date range
         default_start_date = datetime(2020, 2, 1)
-        default_end_date = datetime(2021, 2, 28)
+        default_end_date = datetime(2021, 3, 31)
         start_date, end_date = st.slider(
             "Select date",
             min_value=default_start_date,
