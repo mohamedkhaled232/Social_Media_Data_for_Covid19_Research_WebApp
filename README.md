@@ -3,7 +3,8 @@
 ---
 
 This web application is designed to delve into human behavior during the COVID-19 pandemic by analyzing tweets related to COVID-19. we utilize tweets that have already been assigned sentiment labels (negative, positive, or neutral) using Natural Language Processing (NLP). By examining the correlation between daily counts of negative sentiment tweets and the government's stringency index, you can gain insights into how people reacted to changes in government policies during this period.
- Web App URL : https://mohamedkhaled232-social-media-data-for-covid19-re-webapp-wq0azt.streamlit.app/
+
+Web App URL : https://mohamedkhaled232-social-media-data-for-covid19-re-webapp-wq0azt.streamlit.app/
 
 ## Data Sources
 
