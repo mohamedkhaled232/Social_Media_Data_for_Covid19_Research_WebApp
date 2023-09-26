@@ -20,8 +20,8 @@ We obtained the stringency index data from the Oxford Coronavirus Government Res
 
 To prepare the data, we start with the raw tweet data that includes tweet IDs, dates, times, sentiment labels, and more. We then group this data by day to calculate the daily tweet count for each sentiment category. We normalize these counts by dividing them by the total number of tweets to obtain the proportion of each sentiment category for each day. To create a smoother trend, we apply a moving average with a window size of 7. Subsequently, we merge the stringency index data from OxCGRT with our processed data.
 
-### `data_preparation.py` Script
-To use the `data_preparation.py` script, follow these steps:
+### `data_preparation` Script
+To use the `data_preparation` script, follow these steps:
 1. Download the tweet data for your selected countries from [here](https://crisisnlp.qcri.org/tbcov) and unzip it.
 2. Download the stringency index CSV file from [here](https://covid.ourworldindata.org/data/owid-covid-data.csv).
 3. The script works on a per-country basis, so provide the following inputs:
