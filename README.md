@@ -12,7 +12,7 @@ For our tweet data, we utilized the "TBCOV: Two Billion Multilingual COVID-19" p
 For more information about TBCOV and access to raw data for any specific country, visit [Their website](https://crisisnlp.qcri.org/tbcov).
 
 ### Stringency Index
-We obtained the stringency index data from the Oxford Coronavirus Government Response Tracker (OxCGRT). This dataset provides daily stringency index values for each country. To know more about OxCGRT, visit [Their website](https://ourworldindata.org/covid-stringency-index). You can download the data directly from [here](https://covid.ourworldindata.org/data/owid-covid-data.csv).
+We obtained the stringency index data from the Oxford Coronavirus Government Response Tracker (OxCGRT). This dataset provides daily stringency index values for each country. Stringency Index is a composite measure of nine of the response metrics: school closures; workplace closures; cancellation of public events; restrictions on public gatherings; closures of public transport; stay-at-home requirements; public information campaigns; restrictions on internal movements; and international travel controls. To know more about OxCGRT, visit [Their website](https://ourworldindata.org/covid-stringency-index). You can download the data directly from [here](https://covid.ourworldindata.org/data/owid-covid-data.csv).
 
 ## Data Preparation
 
