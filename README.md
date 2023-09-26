@@ -42,7 +42,7 @@ In this section, you can select a country and a specific time period. The first 
 In this section, you can analyze multiple countries simultaneously and compare their stringency index trends, negative tweet counts, or correlations between the stringency index and negative tweet counts trends. Once again, the time series plot of the Pearson correlation coefficient is calculated using a rolling moving average with a window size equal to the number of days you select divided by 7.
 
 
-# streamlite
+# How To Create And Deploy Web App Using Streamlit
 This guide will walk you through the process of creating a web app with Streamlit and deploying it to Streamlit Cloud. Streamlit is a Python library that simplifies the development of data-driven web applications.
 
 ## Prerequisites
