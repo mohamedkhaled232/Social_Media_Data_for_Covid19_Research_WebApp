@@ -42,6 +42,85 @@ In this section, you can select a country and a specific time period. The first 
 In this section, you can analyze multiple countries simultaneously and compare their stringency index trends, negative tweet counts, or correlations between the stringency index and negative tweet counts trends. Once again, the time series plot of the Pearson correlation coefficient is calculated using a rolling moving average with a window size equal to the number of days you select divided by 7.
 
 
+# streamlite
+
+```markdown
+# Streamlit Web App Deployment Guide
+
+This guide will walk you through the process of creating a web app with Streamlit and deploying it to Streamlit Cloud. Streamlit is a Python library that simplifies the development of data-driven web applications.
+
+## Prerequisites
+
+- Python installed on your computer.
+- A Streamlit Cloud account. Sign up at [Streamlit Cloud](https://streamlit.io/cloud).
+
+## Step 1: Install Streamlit
+
+Install Streamlit using pip:
+
+```bash
+pip install streamlit
+```
+
+## Step 2: Create a Streamlit Web App
+
+1. Create a Python script (e.g., `app.py`) where you'll write your Streamlit app code.
+2. Import Streamlit and any necessary libraries.
+3. Define the app layout and functionality using Streamlit components like `st.title`, `st.markdown`, `st.sidebar`, `st.button`, `st.plotly_chart`, etc.
+
+## Step 3: Run the Web App Locally
+
+1. Open your terminal and navigate to the directory containing your `app.py` file.
+2. Run the app using the following command:
+
+```bash
+streamlit run app.py
+```
+
+This will launch a local development server, and you can access your app in a web browser at `http://localhost:8501`.
+
+## Step 4: Test Your Web App
+
+Interact with your app locally to ensure it works as expected.
+
+## Step 5: Set Up a Streamlit Cloud Account
+
+Go to [Streamlit Cloud](https://streamlit.io/cloud) and sign up for an account if you don't have one.
+
+## Step 6: Prepare Your Project for Deployment
+
+Make sure your project directory includes any necessary data files, assets, and dependencies listed in a `requirements.txt` file.
+
+## Step 7: Deploy to Streamlit Cloud
+
+1. Go to the Streamlit Cloud dashboard and create a new app.
+2. Connect your GitHub repository to Streamlit Cloud if your code is hosted on GitHub.
+
+## Step 8: Configure Deployment Settings
+
+In the Streamlit Cloud dashboard, configure deployment settings, including the branch to deploy from, environment variables, and more.
+
+## Step 9: Deploy Your App
+
+1. Click the "Deploy" button in the Streamlit Cloud dashboard.
+2. Streamlit Cloud will build and deploy your app automatically.
+
+## Step 10: Access Your Deployed App
+
+Once the deployment process is complete, you will receive a public URL where your app is hosted.
+
+## Step 11: Share Your Web App
+
+Share the provided URL with others to allow them to access your web app from anywhere.
+
+## Step 12: Monitor and Update
+
+You can monitor app usage and make updates to your app by pushing changes to your GitHub repository. Streamlit Cloud will automatically redeploy when changes are detected.
+
+That's it! You've successfully created a web app using Streamlit and deployed it to Streamlit Cloud, making it accessible to a wider audience. Remember to secure your data and follow best practices for web app development and deployment for a smooth and secure user experience.
+```
+
+You can copy and paste this Markdown text into your repository's README.md file and customize it as needed.
 *Note*: This web app is built using Python and Streamlit.
 
 --- 
