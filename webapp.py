@@ -8,26 +8,27 @@ import os
 import io
 from streamlit_option_menu import option_menu
 
-
-
+# define the path of the repository and the country names which is ( the tsv files names )
 dir_path = os.path.dirname(os.path.realpath(__file__))
 country_names = ["Afghanistan", "Belgium", "Bolivia", "Chile", "Croatia", "Czechia", "Denmark", "Egypt", "France", "Germany", "Ireland", "Israel", "Italy", "Luxembourg", "Malaysia", "Norway", "Slovakia", "Slovenia", "South Africa", "Spain", "Sudan", "Switzerland", "Togo", "Uganda", "United Kingdom", "Yemen", "Zimbabwe"]
 
-
+# Create sile menu and choose the title and the icons
+# from this slide menu you can divide the web app into pages and you can choose the default page to display
 with st.sidebar:
     selected = option_menu("Main Menu", ["Home", 'Correlation Plot', "Different Countries' Trends"], 
         icons=['house','graph-up', 'globe'], menu_icon="menu-button-wide", default_index=0)
     
-
+# Use if statment to choose the page you want to display and take different actions
+# the 1st page is the home page
 if selected== "Home" :
     
-
-
+    # Add a title to your app
     st.title("Social Media Data for Covid19 Research WebApp")
 
     st.write("This web application is designed to delve into human behavior during the COVID-19 pandemic by analyzing tweets related to COVID-19. we utilize tweets that have already been assigned sentiment labels (negative, positive, or neutral) using Natural Language Processing (NLP). By examining the correlation between daily counts of negative sentiment tweets and the government's stringency index, you can gain insights into how people reacted to changes in government policies during this period. You can also compare trends across different countries to understand how people in different parts of the world reacted to the pandemic and government policies. "
              )
     st.write("[Github Repository](https://github.com/mohamedkhaled232/Application-of-Social-Media-Data-in-COVID-19-Research)")
+    # Using expander to make the web app more organized and easy to read
     # Data Source Expander
     with st.expander("Data Sources"):
         st.write("### Tweets Data")
@@ -89,23 +90,24 @@ if selected== "Home" :
     st.write("*Note*: This web app is built using Python and Streamlit.")
 
 
-
+# Use if statment to choose the page you want to display and take different actions
+# the 2nd page is the correlation plot page
 if selected== 'Correlation Plot' :
    # Add a title to your app
     st.title(" Correlation Plot ( Stringency Index - Negative Sentiment Tweet Count )")
 
     # Create a select box for country selection
+    # set the default country to Germany
     default_ix = country_names.index('Germany')
     selected_country = st.selectbox("Select a country:", country_names, index=default_ix)
-
+    # Construct the path to the TSV file based on the selected country
     url = os.path.join(dir_path, f"Data/{selected_country}.tsv")
-
-        
+    # Load the data from the TSV file and read it as a Pandas DataFrame
     df = pd.read_csv(url, sep='\t')
 
     # Set default values for the date range
     default_start_date = datetime(2020, 2, 1)
-    default_end_date = datetime(2021, 2, 28)
+    default_end_date = datetime(2021, 03, 31)
 
     # Create a double-ended slider for selecting the date range
     start_date, end_date = st.slider(
@@ -116,26 +118,20 @@ if selected== 'Correlation Plot' :
         format="MM/DD/YYYY",
     )
 
-
+    # Calculate the number of days between start_date and end_date to use it in window size calculation
     days_difference = (end_date - start_date).days
-
     start_date = pd.to_datetime(start_date)
     end_date = pd.to_datetime(end_date)
-
+    # Filter data based on the selected date range
     df['day'] = pd.to_datetime(df['day'])
     df = df[(df['day'] >= start_date) & (df['day'] <= end_date)]
-
+    # Reset the index of the DataFrame
     df.reset_index(drop=True, inplace=True)
-
-
-    # Assuming you have already defined df and days_difference
-
+    # Keep the coulmns that will be used in variables
     x = df['day']
     y1 = df['normalized_tweet_count_-1_smoothed']
     y2 = df['stringency_index']
-
-    correlation_y1_y2 = np.corrcoef(y1, y2)[0, 1]
-
+    
     # Create the first plot
     fig, ax1 = plt.subplots(figsize=(12, 6))
 
@@ -161,9 +157,9 @@ if selected== 'Correlation Plot' :
 
     plt.tight_layout()
     plt.show()
-
+    # Display the plot in the web app
     st.pyplot(plt)
-
+    # creat a download button for the first plot to download it as png
     def download_plot():
         # Save the plot to a BytesIO object
         buffer = io.BytesIO()
@@ -181,13 +177,16 @@ if selected== 'Correlation Plot' :
     # Call the download_plot function to add the download button
     download_plot()
     
+    # Calculate the Pearson correlation coefficient between y1 and y2 and print it
     correlation_y1_y2 = np.corrcoef(y1, y2)[0, 1]
     st.write("Pearson correlation coefficient between Stringency Index and normalized negative sentiment tweet count for the overall selected period =", correlation_y1_y2)
     
-
+    # Prepare the data for the second plot
     # Calculate the window_size by dividing days_difference by 7
     window_size = int(days_difference / 7)
+    # Calculate the rolling correlation between y1 and y2 using the window_size
     df['rolling_correlation'] = df['normalized_tweet_count_-1_smoothed'].rolling(window=window_size).corr(df['stringency_index'])
+    # Plot the rolling correlation
     plt.figure(figsize=(12, 6))
     plt.plot(df['day'], df['rolling_correlation'], label='Rolling Correlation', color='tab:blue')
     plt.xlabel('Day')  # Change 'Date' to 'Day' for consistency with the first plot
@@ -199,14 +198,14 @@ if selected== 'Correlation Plot' :
     plt.tight_layout()
     plt.show()
     st.pyplot(plt)
-
+    # creat a download button for the second plot to download it as png
     def download_plot1():
         # Save the first plot to a BytesIO object
         buffer = io.BytesIO()
         plt.savefig(buffer, format='png')
         buffer.seek(0)
         
-        # Create a download button for the first plot
+        
         st.download_button(
             label="Download PNG",
             data=buffer,
@@ -217,21 +216,18 @@ if selected== 'Correlation Plot' :
     # Call the download_plot1 function to add the download button for the first plot
     download_plot1()
 
-    
+    # Print the window_size that we used
     st.write("This time series plot of the Pearson correlation coefficient is calculated using a rolling moving average with a window size  =", window_size)   
 
 
-
+# Use if statment to choose the page you want to display and take different actions
+# the 3rd page is the different countries' trends page
 if selected== "Different Countries' Trends" :
     st.title('Explore Different Countries\' Trends ')
+    # Create a radio button for selecting the parameter to plot
     selected_option = st.radio("Select a parameter:", ["Stringency Index", "Negative Tweets", "Correlation between Stringency Index and Normalized Negative Tweet count"])
-
-
-
-
     # Initialize selected_factor variable
     selected_factor = ""
-
     # Set selected_factor based on the user's choice
     if selected_option == "Stringency Index":
         selected_factor = 'stringency_index'
@@ -240,32 +236,26 @@ if selected== "Different Countries' Trends" :
     elif selected_option == "Correlation between Stringency Index and Normalized Negative Tweet count":
         selected_factor = 'rolling_correlation'
 
-
-
-
-
     # Function to load data and plot
     def plot_time_series(country_name, color, start_date, end_date):
         # Construct the path to the TSV file based on the selected country
-        file_path = os.path.join(dir_path, f"Data/{country_name}.tsv")
-        
+        file_path = os.path.join(dir_path, f"Data/{country_name}.tsv")        
         # Load the data from the TSV file
         data = pd.read_csv(file_path, sep='\t')
-
         # Filter data based on the selected date range
         data['day'] = pd.to_datetime(data['day'])
         filtered_data = data[(data['day'] >= start_date) & (data['day'] <= end_date)]
-        
+        # Calculate The number of days between start_date and end_date to use it in window size calculation 
         days_difference = (end_date - start_date).days
+        # Calculate the window_size by dividing days_difference by 7
         window_size = int(days_difference / 7)
-        
+        # Calculate the rolling correlation between y1 and y2 using the window_size to plot it in case of selecting Correlation between Stringency Index and Normalized Negative Tweet count
         filtered_data['rolling_correlation'] = filtered_data['normalized_tweet_count_-1_smoothed'].rolling(window=window_size).corr(filtered_data['stringency_index'])
-
-        # Create a line plot with a specified color
+        # Create the plot
         plt.plot(filtered_data['day'], filtered_data[selected_factor], label=f'{country_name}', color=color)
         
 
-    # Streamlit app
+    # Function to plot the selected countries
     def main():
         
 
@@ -307,14 +297,14 @@ if selected== "Different Countries' Trends" :
     if __name__ == '__main__':
 
         main()
-
+    # creat a download button for the plot to download it as png
     def download_plot2():
         # Save the second plot to a BytesIO object
         buffer = io.BytesIO()
         plt.savefig(buffer, format='png')
         buffer.seek(0)
         
-        # Create a download button for the second plot
+       
         st.download_button(
             label="Download PNG",
             data=buffer,
