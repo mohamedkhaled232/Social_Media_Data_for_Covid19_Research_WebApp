@@ -1,4 +1,4 @@
-# Social_Media_Data_for_Covid19_Research_WebApp
+# Social Media Data for Covid19 Research WebApp
 
 ---
 
