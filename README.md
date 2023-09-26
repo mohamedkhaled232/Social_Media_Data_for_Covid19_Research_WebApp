@@ -43,7 +43,7 @@ In this section, you can analyze multiple countries simultaneously and compare t
 
 
 # How To Create And Deploy Web App Using Streamlit
-This guide will walk you through the process of creating a web app with Streamlit and deploying it to Streamlit Cloud. Streamlit is a Python library that simplifies the development of data-driven web applications.
+Streamlit is a Python library that simplifies the development of data-driven web applications.
 
 ## Prerequisites
 
