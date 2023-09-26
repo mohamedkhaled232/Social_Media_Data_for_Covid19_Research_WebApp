@@ -172,7 +172,7 @@ if selected== 'Correlation Plot' :
         
         # Create a download button
         st.download_button(
-            label="Download Plot",
+            label="Download PNG",
             data=buffer,
             file_name="sample_plot.png",
             key="download_plot"
@@ -208,7 +208,7 @@ if selected== 'Correlation Plot' :
         
         # Create a download button for the first plot
         st.download_button(
-            label="Download Plot",
+            label="Download PNG",
             data=buffer,
             file_name="sample_plot1.png",
             key="download_plot1"
@@ -316,7 +316,7 @@ if selected== "Different Countries' Trends" :
         
         # Create a download button for the second plot
         st.download_button(
-            label="Download Plot",
+            label="Download PNG",
             data=buffer,
             file_name="sample_plot2.png",
             key="download_plot2"
